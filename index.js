@@ -23,7 +23,7 @@ app.get("/", async (req, res) => {
         const total = await Total.findOne(); // Fetch the total sum from the database
         const totalSum = total ? total.sum : 0;
 
-        res.render("indexCopy", { title: "Contact List", list: contacts, totalSum });
+        res.render("indexCopy", { title: "Pujor_Chanda", list: contacts, totalSum });
     } catch (error) {
         console.error("Error fetching contacts", error);
         res.status(500).send("Internal Server Error");
