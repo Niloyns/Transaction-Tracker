@@ -7,12 +7,16 @@
     <title>
         <%= title %>
     </title>
-    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/assets/css/index.css">
     <script src="https://kit.fontawesome.com/d646a66da9.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <h1><i class="fa-solid fa-om"></i> Chanda Collection</h1>
+
+    <h2>Total Sum: <%= totalSum %>
+    </h2> <!-- Display total sum -->
+
     <div class="contact-list">
         <ul>
             <% list.forEach((item, index)=> { %>
@@ -24,11 +28,21 @@
                         <p>
                             <%= item.phone %>
                         </p>
+                        <p><small>
+                                <%= new Date(item.createdAt).toLocaleString() %>
+                            </small></p> <!-- Show timestamp -->
                     </div>
                 </li>
                 <% }); %>
         </ul>
     </div>
+
+    <!-- <form action="/create-contact" method="POST">
+        <input type="text" name="name" placeholder="Enter Name" required>
+        <input type="number" name="phone" placeholder="Enter Number" required>
+        <button type="submit">Submit</button>
+    </form> -->
+
     <script src="/js/index.js"></script>
 </body>
 

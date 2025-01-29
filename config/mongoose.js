@@ -1,19 +1,7 @@
-// const mongoose = require("mongoose");
-
-// mongoose.connect("mongodb+srv://niloysarkar1998:DPCGpwrxxP95yKdB@cluster0.z97yd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-// .then(()=>{
-//     console.log("success mongodb connection");
-// })
-// .catch((err)=>{
-//     console.log(err);
-// })
-
-
 const mongoose = require("mongoose");
+require("dotenv").config();
 
-mongoose.connect("mongodb+srv://niloysarkar1998:6H0wzu73JRqs7Y1l@cluster0.vevj5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
+mongoose.connect(process.env.MONGO_URI, {
 })
 .then(() => console.log("✅ MongoDB Connected Successfully"))
 .catch((err) => console.error("❌ MongoDB Connection Failed:", err));

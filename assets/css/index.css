@@ -1,104 +1,123 @@
+/* General Styles */
 body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
   margin: 0;
   padding: 0;
-  background-color: beige;
-  font-family: sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  flex-direction: column;
+  text-align: center;
 }
 
 h1 {
-  text-align: center;
-  margin-top: 25px;
-  color: gray;
+  color: #333;
+  font-size: 28px;
+  margin: 20px 0;
 }
 
+h2 {
+  color: #444;
+  font-size: 22px;
+  margin: 10px 0;
+}
+
+/* Contact List */
 .contact-list {
-  width: 300px;
-  margin-top: 20px;
+  width: 90%;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
 }
 
 .contact-list ul {
   list-style: none;
   padding: 0;
-  margin: 0;
 }
 
-.contact-list ul li {
-  background-color: aquamarine;
-  margin: 10px 0;
-  padding: 10px;
-  border-radius: 5px;
+.contact-list li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: background-color 0.3s;
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
 }
 
-.contact-list ul li:hover {
-  background-color: gray;
+.contact-list li:last-child {
+  border-bottom: none;
 }
 
-.contact-list ul li .details {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
+.details p {
+  margin: 5px 0;
+  font-size: 16px;
+  color: #333;
 }
 
-.contact-list ul li p {
-  margin: 0;
-  padding: 0;
-}
-
-.contact-list ul li .delete a {
-  margin: 0 5px;
+.delete a {
   color: red;
+  font-size: 20px;
   text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background-color: white;
-  transition: background-color 0.3s, color 0.3s;
 }
 
-.contact-list ul li .delete a:hover {
-  background-color: #ffcccb;
-  color: white;
-}
-
+/* Form Styles */
 form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 20px;
+  margin: 20px auto;
+  width: 90%;
+  max-width: 400px;
+  padding: 15px;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
 }
 
 form input {
+  width: 100%;
   padding: 10px;
+  margin: 8px 0;
   border: 1px solid #ccc;
   border-radius: 5px;
-  margin: 5px;
-  width: 200px;
+  font-size: 16px;
 }
 
 form button {
+  width: 100%;
   padding: 10px;
-  border: none;
   background-color: #28a745;
   color: white;
+  border: none;
+  font-size: 16px;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s;
-  margin: 5px;
-  width: 200px;
 }
 
 form button:hover {
   background-color: #218838;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 24px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .contact-list {
+    width: 95%;
+  }
+
+  .contact-list li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .delete a {
+    font-size: 18px;
+  }
+
+  form {
+    width: 95%;
+  }
 }
