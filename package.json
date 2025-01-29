@@ -9,9 +9,10 @@
   "main": "index.js",
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "node --noteammount index.js",
+    "start": "node index.js"
   },
-  "author": "",
+  "author": "Niloy",
   "license": "ISC",
   "description": ""
 }
