@@ -93,5 +93,5 @@ app.get("/delete-contact/:id", async (req, res) => {
 });
 
 app.listen(10000, () => {
-    console.log("✅ Server running on port 5000");
+    console.log("✅ Server running on port 10000");
 });
