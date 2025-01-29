@@ -47,16 +47,22 @@ app.get("/admin", async (req, res) => {
 app.post("/create-contact", async (req, res) => {
     try {
         const { name, phone } = req.body;
+        
+        // Check if phone contains only numbers
+        const isNumber = /^\d+$/.test(phone);
+        
         const contactData = new Contact({ name, phone });
         await contactData.save();
 
-        // Update total sum
-        let total = await Total.findOne();
-        if (!total) {
-            total = new Total({ sum: 0 });
+        // Update total sum only if it's a number
+        if (isNumber) {
+            let total = await Total.findOne();
+            if (!total) {
+                total = new Total({ sum: 0 });
+            }
+            total.sum += parseInt(phone, 10);
+            await total.save();
         }
-        total.sum += parseInt(phone, 10);
-        await total.save();
 
         res.redirect("back");
     } catch (error) {
@@ -64,6 +70,7 @@ app.post("/create-contact", async (req, res) => {
         res.status(500).send("Internal Server Error");
     }
 });
+
 
 // Delete a contact and subtract its number from total sum
 app.get("/delete-contact/:id", async (req, res) => {
