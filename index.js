@@ -80,16 +80,20 @@ app.get("/delete-contact/:id", async (req, res) => {
             return res.status(404).send("Contact not found");
         }
 
+        // Check if the phone value is a number before subtracting from the total
         const contactNumber = parseInt(contact.phone, 10);
+        const isNumber = !isNaN(contactNumber);
 
-        // Remove contact
+        // Delete contact from database
         await Contact.findByIdAndDelete(req.params.id);
 
-        // Update total sum
-        let total = await Total.findOne();
-        if (total) {
-            total.sum -= contactNumber;
-            await total.save();
+        // Update total sum only if phone was a valid number
+        if (isNumber) {
+            let total = await Total.findOne();
+            if (total) {
+                total.sum -= contactNumber;
+                await total.save();
+            }
         }
 
         res.redirect("back");
@@ -98,6 +102,7 @@ app.get("/delete-contact/:id", async (req, res) => {
         res.status(500).send("Internal Server Error");
     }
 });
+
 
 app.listen(10000, () => {
     console.log("✅ Server running on port 10000");

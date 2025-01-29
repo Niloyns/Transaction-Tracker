@@ -32,7 +32,7 @@ h2 {
   padding: 10px;
   display: inline-block;
   border-radius: 8px;
-  animation: popIn 0.8s ease-out;
+  animation: popIn 0.5s ease-out;
 }
 
 /* Contact List Container */
