@@ -1,12 +1,12 @@
-# 📞 Contact Manager - Node.js, Express, MongoDB, Render & Vercel Deployment
+# 📞 Amount Manager - Node.js, Express, MongoDB, Render & Vercel Deployment
 
-A **simple Collect Money management system** built with **Node.js, Express, MongoDB, and EJS** that allows users to **add, view, delete Ammount**, and dynamically track the total sum. The project is **fully responsive** and **animated**.
+A **simple Collect Money management system** built with **Node.js, Express, MongoDB, and EJS** that allows users to **add, view, delete Amount**, and dynamically track the total sum. The project is **fully responsive** and **animated**.
 
 ---
 
 ## 🚀 Features
 
-✅ Add, View, and Delete Ammount  
+✅ Add, View, and Delete Amount  
 ✅ **Fully Responsive & Animated UI**  
 ✅ **MongoDB Integration** using Mongoose  
 ✅ **Hosted on Render (Backend) & (Frontend)**
@@ -100,7 +100,7 @@ https://your-app.onrender.com
 If you see:
 
 ```
-MongooseError: Operation `Ammount.find()` buffering timed out
+MongooseError: Operation `Amount.find()` buffering timed out
 ```
 
 ✅ **Fix:**
