@@ -18,14 +18,20 @@ document.addEventListener("DOMContentLoaded", function () {
         transactionList.appendChild(row);
     }
 
-    // Handle Transaction Form Submission (Without Refresh)
-    transactionForm.addEventListener("submit", async function (event) {
-        event.preventDefault();
+    /// Handle Transaction Form Submission (Without Refresh)
+transactionForm.addEventListener("submit", async function (event) {
+    event.preventDefault();
 
-        const name = document.getElementById("name").value;
-        const amount = document.getElementById("amount").value;
-        const type = document.getElementById("type").value;
+    const name = document.getElementById("name").value;
+    const amount = document.getElementById("amount").value;
+    const type = document.getElementById("type").value;
+    const submitButton = transactionForm.querySelector("button[type='submit']");
 
+    // Disable submit button to prevent double submission
+    submitButton.disabled = true;
+    submitButton.textContent = "Adding..."; // Show loading text
+
+    try {
         const response = await fetch("/add-transaction", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -40,8 +46,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Reset Form Fields
             transactionForm.reset();
+        } else {
+            alert("Error adding transaction.");
         }
-    });
+    } catch (error) {
+        console.error("Error:", error);
+        alert("Failed to add transaction.");
+    } finally {
+        // Re-enable submit button after processing
+        submitButton.disabled = false;
+        submitButton.textContent = "Add"; // Reset button text
+    }
+});
+
 
     // Handle Transaction Deletion (Without Refresh)
 transactionList.addEventListener("click", async function (event) {
