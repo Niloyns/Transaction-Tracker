@@ -25,17 +25,17 @@
                     formattedTime=date.toLocaleTimeString(); %>
                     <li class="<%= transaction.type === 'income' ? 'bg-green' : 'bg-red' %>"
                         data-id="<%= transaction._id %>">
-                        <%= transaction.name %> - <%= transaction.amount %> (<%= transaction.type %>) - Total: <%=
-                                        runningTotal %>
+                        <%= transaction.name %> --- <%= transaction.amount %> (<%= transaction.type %>)
+                                    --------------->>> Total: <%= runningTotal %>
                                         <br>
                                         <small>Date: <%= formattedDate %> | Time: <%= formattedTime %></small>
-                                        <!-- <button class="delete-btn" data-id="<%= transaction._id %>">❌</button> -->
+                                        <button class="delete-btn" data-id="<%= transaction._id %>">❌</button>
                     </li>
                     <% }); %>
     </ul>
 
 
-    <!-- <form id="transaction-form">
+    <form id="transaction-form">
         <input type="text" id="name" placeholder="Transaction Name" required>
         <input type="number" id="amount" placeholder="Amount" required>
         <select id="type">
@@ -43,7 +43,7 @@
             <option value="expense">Expense</option>
         </select>
         <button type="submit">Add</button>
-    </form> -->
+    </form>
 
     <script src="/js/script.js"></script>
 </body>
