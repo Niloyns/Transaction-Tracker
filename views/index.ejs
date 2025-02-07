@@ -53,14 +53,14 @@
                                 <td>
                                     <%= new Date(transaction.createdAt).toLocaleTimeString() %>
                                 </td>
-                                <td><button class="delete-btn" data-id="<%= transaction._id %>">❌</button></td>
+                                <!-- <td><button class="delete-btn" data-id="<%= transaction._id %>">❌</button></td> -->
                             </tr>
                             <% }); %>
             </tbody>
         </table>
     </div>
 
-    <form id="transaction-form">
+    <!-- <form id="transaction-form">
         <input type="text" id="name" placeholder="Transaction Name" required>
         <input type="number" id="amount" placeholder="Amount" required>
         <select id="type">
@@ -68,7 +68,7 @@
             <option value="expense">Expense</option>
         </select>
         <button type="submit">Add</button>
-    </form>
+    </form> -->
 
     <script src="/js/script.js"></script>
 </body>
