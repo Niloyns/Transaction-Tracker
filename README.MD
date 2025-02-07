@@ -1,6 +1,6 @@
 # 💰 Transaction Tracker
 
-A **simple and interactive finance tracking application** built with **Node.js, Express, MongoDB, and EJS** that allows users to **add, view, and delete transactions** in real-time with a **dynamic total balance update**.
+A **simple and interactive finance tracking application** built with **Node.js, Express, MongoDB, and EJS** that allows users to **add, view, and delete transactions** in real-time with a **dynamic total balance updates**.
 
 ---
 
