@@ -16,18 +16,18 @@ router.get("/", async (req, res) => {
         res.status(500).send("Internal Server Error");
     }
 });
-router.get("/admin", async (req, res) => {
-    try {
-        const transactions = await Transaction.find();
-        const total = await Total.findOne();
-        const totalBalance = total ? total.amount : 0;
+// router.get("/admin", async (req, res) => {
+//     try {
+//         const transactions = await Transaction.find();
+//         const total = await Total.findOne();
+//         const totalBalance = total ? total.amount : 0;
 
-        res.render("admin", { title: "Transaction Tracker", transactions, totalBalance });
-    } catch (error) {
-        console.error("Error fetching transactions", error);
-        res.status(500).send("Internal Server Error");
-    }
-});
+//         res.render("admin", { title: "Transaction Tracker", transactions, totalBalance });
+//     } catch (error) {
+//         console.error("Error fetching transactions", error);
+//         res.status(500).send("Internal Server Error");
+//     }
+// });
 
 // Add Transaction
 router.post("/add-transaction", async (req, res) => {
