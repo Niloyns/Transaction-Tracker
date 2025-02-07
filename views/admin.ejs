@@ -20,20 +20,19 @@
         <% let runningTotal=0; %>
             <% transactions.forEach((transaction)=> { %>
                 <% if (transaction.type==="income" ) { runningTotal +=transaction.amount; } else if
-                    (transaction.type==="expense" ) { runningTotal -=transaction.amount; } // Format date and time const
-                    date=new Date(transaction.createdAt); const formattedDate=date.toLocaleDateString(); const
+                    (transaction.type==="expense" ) { runningTotal -=transaction.amount; } let date=new
+                    Date(transaction.createdAt); let formattedDate=date.toLocaleDateString(); let
                     formattedTime=date.toLocaleTimeString(); %>
                     <li class="<%= transaction.type === 'income' ? 'bg-green' : 'bg-red' %>"
                         data-id="<%= transaction._id %>">
-                        <%= transaction.name %> --- <%= transaction.amount %> (<%= transaction.type %>)
-                                    --------------->>> Total: <%= runningTotal %>
+                        <%= transaction.name %> - <%= transaction.amount %> (<%= transaction.type %>) - Running Total:
+                                    <%= runningTotal %>
                                         <br>
                                         <small>Date: <%= formattedDate %> | Time: <%= formattedTime %></small>
                                         <button class="delete-btn" data-id="<%= transaction._id %>">❌</button>
                     </li>
                     <% }); %>
     </ul>
-
 
     <form id="transaction-form">
         <input type="text" id="name" placeholder="Transaction Name" required>
@@ -47,6 +46,5 @@
 
     <script src="/js/script.js"></script>
 </body>
-
 
 </html>
