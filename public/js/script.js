@@ -4,13 +4,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const totalBalanceElement = document.getElementById("total-balance");
 
     // Function to add transaction to table dynamically
-    function addTransactionToTable(transaction) {
+    function addTransactionToTable(transaction, totalBalance) {
         const row = document.createElement("tr");
         row.classList.add(transaction.type === "income" ? "income" : "expense");
         row.innerHTML = `
             <td>${transaction.name}</td>
             <td>${transaction.amount}</td>
-            <td>${transaction.totalBalance}</td>
+            <td>${totalBalance}</td> <!-- ✅ Display updated total balance -->
             <td>${new Date(transaction.createdAt).toLocaleDateString()}</td>
             <td>${new Date(transaction.createdAt).toLocaleTimeString()}</td>
             <td><button class="delete-btn" data-id="${transaction._id}">❌</button></td>
@@ -35,8 +35,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const data = await response.json();
         if (data.success) {
             // Update Table Without Refresh
-            addTransactionToTable(data.transaction);
-            totalBalanceElement.textContent = data.totalBalance;
+            addTransactionToTable(data.transaction, data.totalBalance);
+            totalBalanceElement.textContent = data.totalBalance; // ✅ Update total balance
 
             // Reset Form Fields
             transactionForm.reset();
@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (data.success) {
                     // Remove Row From Table Without Refresh
                     event.target.closest("tr").remove();
-                    totalBalanceElement.textContent = data.totalBalance;
+                    totalBalanceElement.textContent = data.totalBalance; // ✅ Update total balance
                 } else {
                     alert("Error deleting transaction.");
                 }
