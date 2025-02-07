@@ -1,155 +1,130 @@
-# 📞 Amount Manager - Node.js, Express, MongoDB, Render & Vercel Deployment
+# 💰 Transaction Tracker
 
-A **simple Collect Money management system** built with **Node.js, Express, MongoDB, and EJS** that allows users to **add, view, delete Amount**, and dynamically track the total sum. The project is **fully responsive** and **animated**.
+A **simple and interactive finance tracking application** built with **Node.js, Express, MongoDB, and EJS** that allows users to **add, view, and delete transactions** in real-time with a **dynamic total balance update**.
 
 ---
 
 ## 🚀 Features
 
-✅ Add, View, and Delete Amount  
-✅ **Fully Responsive & Animated UI**  
-✅ **MongoDB Integration** using Mongoose  
-✅ **Hosted on Render (Backend) & (Frontend)**
+✅ **Add Income and Expenses** with real-time updates ✅ **Categorized Styling** (Green for Income, Red for Expenses) ✅ **Total Balance Calculation Without Page Refresh** ✅ **Database Integration** using MongoDB ✅ **Fully Responsive and Animated UI** ✅ **REST API for Transactions**
 
 ---
 
 ## 🛠️ Tech Stack
 
 - **Backend:** Node.js, Express.js, MongoDB, Mongoose
-- **Frontend:** EJS, JavaScript (Fetch API), CSS (Animations)
-- **Hosting:** Render (API), Vercel (Frontend)
+- **Frontend:** EJS, JavaScript, CSS
+- **Hosting:** Render (Backend), Vercel (Frontend)
 - **Database:** MongoDB Atlas
 
 ---
 
 ## 🔧 Installation & Setup
 
-### 1️⃣ Clone the repository
+### **1️⃣ Clone the Repository**
 
 ```sh
-git clone https://github.com/your-username/contact-manager.git
-cd contact-manager
+git clone https://github.com/your-username/transaction-tracker.git
+cd transaction-tracker
 ```
 
-### 2️⃣ Install Dependencies
+### **2️⃣ Install Dependencies**
 
 ```sh
 npm install
 ```
 
-### 3️⃣ Set Up Environment Variables
+### **3️⃣ Configure Environment Variables**
 
-Create a `.env` file in the root directory:
+Create a `.env` file in the root directory and add your MongoDB URI:
 
-```ini
-MONGO_URI=your-mongodb-connection-string
+```sh
+MONGO_URI=your_mongodb_connection_string
 PORT=5000
 ```
 
-Replace `your-mongodb-connection-string` with your **MongoDB Atlas connection URI**.
-
-### 4️⃣ Run Locally
+### **4️⃣ Run the Server**
 
 ```sh
-node server.js
+npm start
 ```
 
-The app will be available at **http://localhost:5000**.
+Or if you want live reload:
+
+```sh
+npm run dev
+```
+
+The application will be available at: [http://localhost:5000](http://localhost:5000)
 
 ---
 
-## 🌍 Deployment
-
-### 1️⃣ Deploy Backend to Render
-
-1. Go to [Render](https://render.com/).
-2. Click **New Web Service** → Select your GitHub repository.
-3. Set the **Build Command** to:
-   ```sh
-   npm install
-   ```
-4. Set **Start Command** to:
-   ```sh
-   node api/index.js
-   ```
-5. Add an **environment variable** `MONGO_URI` with your MongoDB connection string.
-6. Click **Deploy**.
-
-✅ Once deployed, your backend API will be available at:
+## 📂 Project Structure
 
 ```
-https://your-app.onrender.com
+/transaction-tracker
+│── /public
+│   │── /css
+│   │   ├── style.css
+│   │── /js
+│   │   ├── script.js
+│── /views
+│   │── index.ejs
+│── /models
+│   │── transaction.js
+│   │── total.js
+│── /routes
+│   │── transactions.js
+│── /config
+│   │── mongoose.js
+│── .env
+│── server.js
+│── package.json
+│── README.md
 ```
 
 ---
 
-## ⚡ API Endpoints
+## 📌 API Endpoints
 
-| Method | Endpoint              | Description       |
-| ------ | --------------------- | ----------------- |
-| GET    | `/`                   | Home Page         |
-| POST   | `/create-contact`     | Add a new contact |
-| DELETE | `/delete-contact/:id` | Delete a contact  |
+### **Get All Transactions**
 
----
-
-## ❌ Troubleshooting
-
-### ❗ MongoDB Connection Timeout (Render)
-
-If you see:
-
-```
-MongooseError: Operation `Amount.find()` buffering timed out
+```http
+GET /
 ```
 
-✅ **Fix:**
+### **Add a Transaction**
 
-- Ensure **MongoDB Atlas allows external connections** (`0.0.0.0/0` in Network Access).
-- Set **`serverSelectionTimeoutMS: 5000`** in `api/index.js`:
-
-  ```js
-  mongoose.connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    serverSelectionTimeoutMS: 5000,
-  });
-  ```
-
-### ❗ Render Fails to Detect Open Ports
-
-If you see:
-
-```
-No open HTTP ports detected on 0.0.0.0
+```http
+POST /add-transaction
 ```
 
-✅ **Fix:** Modify `api/index.js` to use `process.env.PORT`:
+#### **Body Parameters:**
 
-```js
-const PORT = process.env.PORT || 10000;
-app.listen(PORT, () => {
-  console.log(`✅ Server running on port ${PORT}`);
-});
+```json
+{
+  "name": "Salary",
+  "amount": 1000,
+  "type": "income"
+}
 ```
 
-### ❗ `.env` Not Working on Vercel/Render
+### **Delete a Transaction**
 
-✅ **Fix:**
-
-- **Vercel:** Add environment variables in **Vercel Dashboard** → **Settings** → **Environment Variables**.
-- **Render:** Add environment variables under **Environment Settings**.
+```http
+DELETE /delete-transaction/:id
+```
 
 ---
 
 ## 📜 License
 
-This project is **MIT Licensed**.
+This project is open-source and available under the MIT License.
 
 ---
 
-## 📞 Contact
+## 📝 Author
 
-For any issues or improvements, feel free to **create an issue** or **submit a pull request**.
-
-✅ **Happy Coding! 🚀**
+👤 **Your Name**\
+📧 Contact: [niloysarkar1998@gmail.com](niloysarkar1998@gmail.com)\
+🔗 GitHub: [Your GitHub](https://github.com/niloyns)
