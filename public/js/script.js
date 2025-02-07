@@ -44,25 +44,33 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Handle Transaction Deletion (Without Refresh)
-    transactionList.addEventListener("click", async function (event) {
-        if (event.target.classList.contains("delete-btn")) {
-            const transactionId = event.target.getAttribute("data-id");
+transactionList.addEventListener("click", async function (event) {
+    if (event.target.classList.contains("delete-btn")) {
+        const transactionId = event.target.getAttribute("data-id");
 
-            try {
-                const response = await fetch(`/delete-transaction/${transactionId}`, { method: "DELETE" });
-                const data = await response.json();
+        // Disable the button to prevent multiple clicks
+        event.target.disabled = true;
+        event.target.textContent = "Deleting..."; // Show deleting text
 
-                if (data.success) {
-                    // Remove Row From Table Without Refresh
-                    event.target.closest("tr").remove();
-                    totalBalanceElement.textContent = data.totalBalance; // ✅ Update total balance
-                } else {
-                    alert("Error deleting transaction.");
-                }
-            } catch (error) {
-                console.error("Error:", error);
-                alert("Failed to delete transaction.");
+        try {
+            const response = await fetch(`/delete-transaction/${transactionId}`, { method: "DELETE" });
+            const data = await response.json();
+
+            if (data.success) {
+                // Remove Row From Table Without Refresh
+                event.target.closest("tr").remove();
+                totalBalanceElement.textContent = data.totalBalance; // ✅ Update total balance
+            } else {
+                alert("Error deleting transaction.");
+                event.target.disabled = false; // Re-enable if error occurs
+                event.target.textContent = "❌"; // Reset text
             }
+        } catch (error) {
+            console.error("Error:", error);
+            alert("Failed to delete transaction.");
+            event.target.disabled = false; // Re-enable if network error occurs
+            event.target.textContent = "❌"; // Reset text
         }
-    });
+    }
+});
 });
