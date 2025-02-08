@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
         row.innerHTML = `
             <td>${transaction.name}</td>
             <td>${transaction.amount}</td>
+            <td>${transaction.type}</td>
             <td>${totalBalance}</td> <!-- ✅ Display updated total balance -->
             <td>${new Date(transaction.createdAt).toLocaleDateString()}</td>
             <td>${new Date(transaction.createdAt).toLocaleTimeString()}</td>
