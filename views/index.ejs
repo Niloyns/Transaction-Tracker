@@ -30,7 +30,7 @@
             </thead>
             <tbody>
                 <% let runningTotal=0; %>
-                    <% transactions.forEach((transaction)=> { %>
+                    <% transactions.forEach((transaction,index)=> { %>
                         <% if (transaction.type==="income" ) { runningTotal +=transaction.amount; } else { runningTotal
                             -=transaction.amount; } %>
                             <tr class="<%= transaction.type === 'income' ? 'income' : 'expense' %>">

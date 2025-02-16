@@ -14,8 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <td>${totalBalance}</td> <!-- ✅ Display updated total balance -->
             <td>${new Date(transaction.createdAt).toLocaleDateString()}</td>
             <td>${new Date(transaction.createdAt).toLocaleTimeString()}</td>
-            <td><button class="delete-btn" data-id="${transaction._id}">❌</button></td>
-        `;
+            <td><button class="delete-btn" data-id="${transaction._id}">❌</button></td>`;
         transactionList.appendChild(row);
     }
 
@@ -68,7 +67,7 @@ transactionList.addEventListener("click", async function (event) {
 
         // Disable the button to prevent multiple clicks
         event.target.disabled = true;
-        event.target.textContent = "Deleting..."; // Show deleting text
+        event.target.textContent = "🚯"; // Show deleting text
 
         try {
             const response = await fetch(`/delete-transaction/${transactionId}`, { method: "DELETE" });
