@@ -7,13 +7,21 @@ document.addEventListener("DOMContentLoaded", function () {
     function addTransactionToTable(transaction, totalBalance) {
         const row = document.createElement("tr");
         row.classList.add(transaction.type === "income" ? "income" : "expense");
+        
+        const index = transactionList.getElementsByTagName("tr").length + 1;
+
         row.innerHTML = `
-            <td>${transaction.name}</td>
+            <td>${index}. ${transaction.name}</td>
             <td>${transaction.amount}</td>
             <td>${transaction.type}</td>
             <td>${totalBalance}</td> <!-- ✅ Display updated total balance -->
             <td>${new Date(transaction.createdAt).toLocaleDateString()}</td>
-            <td>${new Date(transaction.createdAt).toLocaleTimeString()}</td>
+            <td>${new Date(transaction.createdAt).toLocaleTimeString('en-US', { 
+    hour: 'numeric', 
+    minute: 'numeric', 
+    second: 'numeric', 
+    hour12: true 
+})}</td>
             <td><button class="delete-btn" data-id="${transaction._id}">❌</button></td>`;
         transactionList.appendChild(row);
     }
